@@ -243,6 +243,13 @@ async def get_recipe_details(recipe_id: str) -> str:
                     result += "\n"
             result += "\n"
 
+        for group in recipe.nutrition_groups:
+            for per in group.recipe_nutritions:
+                result += f"Nutrition (per {per.quantity} {per.unit_notation}):\n"
+                for n in per.nutritions:
+                    result += f"  • {n.type}: {n.number} {n.unittype}\n"
+                result += "\n"
+
         # Note: Cookidoo's API does not expose step-by-step instructions
         # for this endpoint, so no "Steps" section can be populated here.
 

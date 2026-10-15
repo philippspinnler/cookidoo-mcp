@@ -21,7 +21,6 @@ from cookidoo_api.const import REMOVE_RECIPE_FROM_CALENDER_PATH
 from cookidoo_api.helpers import (
     get_localization_options,
 )
-import aiohttp
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 from schemas import RecipeIngredient, RecipeStep, ingredient_to_api, step_to_api
@@ -201,9 +200,7 @@ class CookidooService:
             )
 
             # Create aiohttp ClientSession with a timeout
-            self._session = ClientSession(
-                connector=aiohttp.TCPConnector(ssl=False)
-            )
+            self._session = ClientSession()
 
             # Create CookidooConfig with credentials
             config = CookidooConfig(

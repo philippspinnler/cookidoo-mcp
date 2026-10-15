@@ -225,7 +225,7 @@ async def get_recipe_details(recipe_id: str) -> str:
             result += f"Servings: {recipe.serving_size}\n"
 
         if hasattr(recipe, "total_time"):
-            result += f"Total Time: {recipe.total_time} minutes\n"
+            result += f"Total Time: {recipe.total_time // 60} minutes\n"
 
         if hasattr(recipe, "difficulty"):
             result += f"Difficulty: {recipe.difficulty}\n"
